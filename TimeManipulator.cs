@@ -8,7 +8,7 @@ public class TimeManipulator : MonoBehaviour {
     public List<Transform> registeredObjects = new List<Transform>();
     List<Moment> moments;
 
-	void Start () {
+	void Awake () {
         RegisterManipulator();
         moments = new List<Moment>();
     }
@@ -16,7 +16,7 @@ public class TimeManipulator : MonoBehaviour {
     bool reversedTime = false;
     void Update()
     {
-        if (moments.Count() > 128000)
+        if (moments.Count > 128000)
             moments.RemoveRange(0, 1000);
         if (!reversedTime)
             moments.Add(Moment.RecordMoment());
